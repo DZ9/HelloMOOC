@@ -1,0 +1,13 @@
+
+.avatar-holder {
+	text-align: center;
+}
+
+.avatar {
+	max-width: 100%;
+}
+
+.avatar:hover {
+	cursor: pointer;
+	opacity: .8;
+}

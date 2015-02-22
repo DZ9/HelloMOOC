@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.saveDir" value="/temp" />
+	<constant name="struts.multipart.maxSize" value="3048576000" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>  
+	 
+
+	<package name="index" namespace="/" extends="struts-default">
+		<global-results>
+	        <result name="error">/error.jsp</result>
+    	</global-results>
+		<global-exception-mappings>
+	        <exception-mapping result="error" exception="java.lang.NoSuchMethodException,org.hibernate.exception.ConstraintViolationException"></exception-mapping>
+	    </global-exception-mappings>
+	    <action name="*" class="studentAction"
+			method="showLogin">
+			<result name="success">/user/login/index.jsp</result>
+		</action>
+		
+		<action name="list" class="studentAction"
+			method="listCourse">
+			<result name="success">/course/list/index.jsp</result>
+			<result name="input">/user/login/index.jsp</result>
+		</action>
+		
+		<action name="info" class="studentAction"
+			method="courseInfo">
+			<result name="success">/course/info/index.jsp</result>
+			<result name="input">/user/login/index.jsp</result>
+		</action>
+		
+		<action name="play" class="studentAction"
+			method="showVideoPlay">
+			<result name="success">/video/play/index.jsp</result>
+			<result name="input">/user/login/index.jsp</result>
+		</action>
+		
+		<action name="teacherInfo" class="studentAction"
+			method="showTeacherInfo">
+			<result name="success">/teacher/info/index.jsp</result>
+			<result name="input">/user/login/index.jsp</result>
+		</action>
+		
+		
+	</package>
+	<package name="json" namespace="/" extends="json-default">
+	     <action name="user_getBarrage" class="studentAction"
+	        method="getBarrage">
+	        <result type="json">
+	        	<param name="contentType">text/html</param>
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/user/login/index.jsp</result>
+		</action>
+		<action name="user_postBarrage" class="studentAction"
+		   method="postBarrage">
+	        <result type="json">
+	        	<param name="contentType">text/html</param>
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/user/login/index.jsp</result>
+		</action>
+	</package>
+
+	<!-- 分别引入三个单独的配置文件 -->
+	<include file="config/struts/struts-*.xml" />
+</struts>    

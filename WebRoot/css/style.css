@@ -1,0 +1,16 @@
+.navbar {
+	margin-bottom: 0;
+}
+
+.carousel-inner .item img {
+	width: 100%;
+}
+
+#carousel-generic {
+	margin-bottom: 1em;
+}
+
+.show-title {
+	line-height: 2em;
+	border-bottom: 1px solid #ccc;
+}

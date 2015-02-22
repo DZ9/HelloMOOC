@@ -1,0 +1,121 @@
+
+.list-item-text {
+	padding-right: 1em;
+}
+
+#barrage-list {
+	max-height: 800px;
+	overflow: auto;	
+}
+#barrage-list .list-group-item > .badge {
+	margin-top: 5px;
+}
+#barrage-list-pane .badge.remove-barrage-btn {
+	margin-top: 4px;
+	background-color: #c66;
+	display: none;
+	color: #fff;
+}
+#barrage-list .list-group-item:hover .remove-barrage-btn {
+	display: inline;
+}
+
+.avatar {
+	width: 32px;
+	height: 32px;
+	border-radius: 4px;
+}
+.discuss-item-profile > * , .note-item-profile > *{
+	vertical-align : top;
+}
+.discuss-item-profile > .avatar, .note-item-profile > .avatar {
+	margin-left: -42px;
+	float: left;
+	width: 32px;
+	border-radius: 4px;
+}
+.discuss-item-profile > .date, .note-item-profile > .date {
+	color: #999;
+}
+.discuss-item-profile > .date:before {
+	content: " 发表于 ";
+}
+.discuss-item-profile > .reply-to {
+	color: #999;
+	display: inline-block;
+	width: 13em;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	margin-left: 1em;	
+}
+.reply-to:before {
+	content: "TO: ";
+}
+
+.discuss-item, .note-item {
+	padding-left: 52px;
+}
+.discuss-item:hover, .note-item:hover {
+	cursor: pointer;
+	background-color: #fbfbfb;
+}
+.discuss-ctrl, .note-ctrl {
+	height: 2em;
+}
+.discuss-ctrl > a, .note-ctrl > a{
+	display: none;
+	line-height: 2em;
+	float: right;
+}
+.discuss-ctrl > a {
+	margin-left: 1em;
+}
+.discuss-item:hover .discuss-ctrl > a {
+	display: inline;
+}
+.reply-pane {
+	padding-top: 1em;
+	margin-bottom: 4em;
+}
+.discuss-publish-pane {
+	margin-bottom: 1.5em;	
+}
+.reply-pane > button, .discuss-publish-pane > button, #note-mine-pane > div > button, #discuss-readall-btn {
+	float: right;
+	margin-left: 1em;
+}
+#reply-input, #discuss-input, #note-input { 
+	resize: none;
+}
+#reply-input, #discuss-input, #note-input {
+	margin-bottom: 1em;	
+}
+.unread, .target {
+	background-color: #ffc;
+}
+.unread:hover, .target:hover {
+	background-color: #ffb;
+}
+.discuss-mine-pane {
+	line-height: 2em;
+	margin-bottom: 1em;
+}
+.unread-count {
+	color: #999;
+}
+.unread-count:before {
+	content: "(";
+}
+.unread-count:after {
+	content: ")";
+}
+.course-link {
+	float: left;
+}
+.course-link, .course-link > a {
+	color: #999;
+}
+.course-link:before {
+	content: "来自：";
+}

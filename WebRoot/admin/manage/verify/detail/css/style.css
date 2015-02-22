@@ -1,0 +1,17 @@
+.cert-link {
+	color: #999;
+	margin-left: 1em;
+}
+
+.form-horizontal .radio {
+	display: inline-block;
+	margin-right: 2em;
+	vertical-align: -webkit-baseline-middle;
+}
+.radio+.radio {
+	margin-top: 0;	
+}
+
+button {
+	margin-left: 1em;
+}

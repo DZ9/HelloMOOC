@@ -1,0 +1,32 @@
+.cimg-holder {
+	text-align: center;
+}
+
+.cimg-holder {
+	text-align: center;
+}
+
+.cimg {
+	max-width: 100%;
+}
+
+.cimg:hover {
+	cursor: pointer;
+	opacity: .8;
+}
+
+.msg-title, .video-title, .resource-title {
+	max-width: 20em;
+}
+
+.progress-holder, .input-holder {
+	margin-top: 1em;
+}
+.progress-holder .progress-bar {
+	width: 100%;
+	height: 2em;
+	line-height: 2em;
+}
+.progress {
+	height: 24px;
+}

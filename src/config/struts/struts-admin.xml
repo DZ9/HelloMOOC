@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.saveDir" value="/temp" />
+	<constant name="struts.multipart.maxSize" value="3048576000" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+	
+	<!-- 定义*Ajax请求处理 -->
+	<package name="admin_json" namespace="/admin" extends="json-default">
+		<action name="admin_deleteCourse" class="adminAction"
+			method="deleteCourse">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_deleteTeacher" class="adminAction"
+			method="deleteTeacher">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_deleteStudent" class="adminAction"
+			method="deleteStudent">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_deleteAdmin" class="adminAction"
+			method="deleteAdmin">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_deleteVideo" class="adminAction"
+			method="deleteVideo">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_deletePost" class="adminAction"
+			method="deletePost">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_deleteResource" class="adminAction"
+			method="deleteResource">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="admin" namespace="/admin" extends="struts-default">
+	
+		<!-- 所有功能性的action定义在此 -->
+	    <action name="admin_login" class="adminAction"
+			method="login">
+			<result name="success"  type= "redirectAction">course</result>
+			<result name="input" type="chain">login</result>
+			<result name="error" type="chain">login</result>
+		</action>
+		
+		<action name="admin_logout" class="adminAction"
+			method="logout">
+			<result name="success">/logout/index.jsp</result>
+		</action>
+		
+		<action name="admin_addTeacher" class="adminAction"
+			method="addTeacher">
+			<result name="success"  type="redirectAction">teacher</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_addStudent" class="adminAction"
+			method="addStudent">
+			<result name="success"  type="redirectAction">user</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_addAdmin" class="adminAction"
+			method="addAdmin">
+			<result name="success"  type="redirectAction">admin</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_updateTeacher" class="adminAction"
+			method="updateTeacher">
+			<result name="success"  type="redirectAction">teacher</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_updateStudent" class="adminAction"
+			method="updateStudent">
+			<result name="success"  type="redirectAction">user</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_updateCourse" class="adminAction"
+			method="updateCourse">
+			 <param name="savePath">/upload</param>
+			<result name="success"  type="redirectAction">course</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_verifyTeacher" class="adminAction"
+			method="verifyTeacher">
+			<result name="success"  type="redirectAction">teacher</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_uploadVideo" class="adminAction"
+			method="uploadVideo">
+			 <param name="savePath">/upload</param>
+             <result name="success" type="chain">courseEdit</result>
+             <result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_uploadResource" class="adminAction"
+			method="uploadResource">
+			 <param name="savePath">/upload</param>
+             <result name="success" type="chain">courseEdit</result>
+             <result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		
+		<action name="admin_addPost" class="adminAction"
+			method="addPost">
+			 <param name="savePath">/upload</param>
+             <result name="success" type="chain">courseEdit</result>
+             <result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin_securityCode" class="adminAction"
+			method="securityCode">
+        <result name="success" type="stream">
+            <param name="contentType">image/jpeg</param>
+            <param name="inputName">imageStream</param>
+            <param name="bufferSize">2048</param>
+        </result>
+    </action>
+		
+		<!-- 所有属于拦截jsp的action定义在此 -->
+		<action name="login" class="adminAction"
+			method="showLogin">
+			
+			<result name="input">/admin/login/index.jsp</result>
+			<result name="success">/course/list/index.jsp</result>
+		</action>
+		
+		<!-- 
+		<action name="*" class="adminAction"
+			method="show{1}">
+			<result name="success">/admin/manage/{1}/list/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		-->
+		 
+		<action name="course" class="adminAction"
+			method="showCourse">
+			<result name="success">/admin/manage/course/list/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="verify" class="adminAction"
+			method="showVerify">
+			<result name="success">/admin/manage/verify/list/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="user" class="adminAction"
+			method="showUser">
+			<result name="success">/admin/manage/user/list/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="admin" class="adminAction"
+			method="showAdmin">
+			<result name="success">/admin/manage/admin/list/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="teacher" class="adminAction"
+			method="showTeacher">
+			<result name="success">/admin/manage/teacher/list/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="courseEdit" class="adminAction"
+			method="showCourseEdit">
+			<result name="success">/admin/manage/course/edit/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="teacherEdit" class="adminAction"
+			method="showTeacherEdit">
+			<result name="success">/admin/manage/teacher/edit/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="teacherVerifyEdit" class="adminAction"
+			method="showTeacherVerifyEdit">
+			<result name="success">/admin/manage/verify/detail/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+		
+		<action name="studentEdit" class="adminAction"
+			method="showStudentEdit">
+			<result name="success">/admin/manage/user/edit/index.jsp</result>
+			<result name="input">/admin/login/index.jsp</result>
+		</action>
+	</package>
+	
+
+	
+</struts>    

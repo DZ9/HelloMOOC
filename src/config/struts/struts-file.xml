@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.saveDir" value="/temp" />
+	<constant name="struts.multipart.maxSize" value="3048576000" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	
+
+	 <package name="fileUpload" namespace="/fileUpload" extends="struts-default">
+        <action name="fileUploadImage" class="core.util.upload.FileUploadAction" method="execute">
+            <!-- 动态设置savePath的属性值 -->
+            <param name="savePath">/upload</param>
+            <result name="success">/admin/login/index.jsp</result>
+            <result name="input">/admin/login/index.jsp</result>
+            <interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <param name="allowedTypes">image/bmp,image/png,image/gif,image/jpeg,image/jpeg</param>
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">1025956</param>
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+        </action>
+        <action name="fileUploadTxt" class="core.util.upload.FileUploadAction" method="execute">
+            <!-- 动态设置savePath的属性值 -->
+            <param name="savePath">/upload</param>
+            <result name="success">/admin/login/index.jsp</result>
+            <result name="input">/admin/login/index.jsp</result>
+            <interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <param name="allowedTypes">application/msword,application/excel,application/vnd.ms-excel,application/zip,application/vnd.ms-powerpoint</param>
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">1025956</param> 
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+        </action>
+        <action name="fileUploadVideo" class="core.util.upload.FileUploadAction" method="execute">
+            <!-- 动态设置savePath的属性值 -->
+            <param name="savePath">/upload</param>
+            <result name="success">/admin/login/index.jsp</result>
+            <result name="input">/admin/login/index.jsp</result>
+            <interceptor-ref name="fileUpload">
+                <!-- 文件过滤 -->
+                <!-- 文件大小, 以字节为单位 -->
+                <param name="maximumSize">1073741824</param> 
+            </interceptor-ref>
+            <!-- 默认拦截器必须放在fileUpload之后，否则无效 -->
+            <interceptor-ref name="defaultStack" />
+        </action>
+    </package>
+
+
+	
+</struts>    

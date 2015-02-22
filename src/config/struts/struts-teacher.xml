@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.multipart.saveDir" value="/temp" />
+	<constant name="struts.multipart.maxSize" value="3048576000" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<package name="teacher_json" namespace="/teacher" extends="json-default">
+		<action name="teacher_deleteCourse" class="teacherAction"
+			method="deleteCourse">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		
+		<action name="teacher_deleteVideo" class="teacherAction"
+			method="deleteVideo">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		
+		<action name="teacher_deletePost" class="teacherAction"
+			method="deletePost">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		
+		<action name="teacher_deleteResource" class="teacherAction"
+			method="deleteResource">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+	</package>
+	<package name="teacher" namespace="/teacher" extends="struts-default">
+	<!-- 功能型 -->
+		<action name="teacher_edit" method="edit" class="teacherAction">
+			<result name="success">/teacher/manage/course/list/index.jsp</result>
+		</action>
+		<action name="teacher_login" method="login" class="teacherAction">
+			<result name="success" type="chain">list</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		<action name="teacher_logout" method="logout" class="teacherAction">
+			<result name="success">/teacher/login/index.jsp</result>
+			<result name="input">/logout/index.jsp</result> 
+		</action>
+		<action name="teacher_signup" method="signup" class="teacherAction">
+			<result name="success">/teacher/login/index.jsp</result>
+			<result name="INPUT">/teacher/signup/index.jsp</result>
+		</action>
+		<action name="teacher_addCourse" method="addCourse" class="teacherAction">
+			<result name="success" type="chain">edit</result>
+			<result name="input">/teacher/manage/course/add/index.jsp</result>
+		</action>
+		
+		<action name="teacher_updateCourse" method="updateCourse" class="teacherAction">
+			<param name="savePath">/upload</param>
+			<result name="success" type="chain">edit</result>
+			<result name="input">index.jsp</result>
+		</action>
+	<!-- 拦截 -->
+		<action name="login" class="teacherAction"
+			method="showLogin">
+			<result name="success">/teacher/manage/course/list/index.jsp</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		<action name="signup" class="teacherAction"
+			method="showSignup">
+			<result name="success">/teacher/signup/index.jsp</result>
+		</action>
+		<action name="discuss" class="teacherAction" method="showDiscuss">
+			<result name="success">/teacher/discuss/index.jsp</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		<action name="list" class="teacherAction" method="showList">
+			<result name="success">/teacher/manage/course/list/index.jsp</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		<action name="edit" class="teacherAction" method="showEdit">
+			<result name="success">/teacher/manage/course/edit/index.jsp</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+		<action name="teacherEdit" class="teacherAction" method="showTeacherEdit">
+			<result name="success">/teacher/manage/course/edit/index.jsp</result>
+			<result name="input">/teacher/login/index.jsp</result>
+		</action>
+	</package>
+	
+
+	<!-- 分别引入三个单独的配置文件 -->
+	
+</struts>    

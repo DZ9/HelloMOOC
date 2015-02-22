@@ -1,0 +1,15 @@
+.avatar-holder {
+	text-align: center;
+}
+
+.avatar {
+	max-width: 100%;
+}
+
+.name {
+	text-align: center;
+}
+
+.glyphicon {
+	margin-right: 1em;
+}
