@@ -1,3 +1,2 @@
 # HelloMOOC
-A MOOC platform.Designed for a English training orgnization.
-
+A MOOC platform.Designed for an English training orgnization.
